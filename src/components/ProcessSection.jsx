@@ -15,8 +15,7 @@ export default function ProcessSection() {
           <p>Getting rid of junk has never been easier. Here's exactly what to expect.</p>
         </div>
         <div className="process-grid">
-          {STEPS.map((s, i) => (
-            <div key={s.num} className={`process-step reveal delay-${i + 1}`}>
+          {STEPS.map((s, i) => (            <div key={s.num} className={`process-step reveal delay-${i + 1}`}>
               <div className="process-step-num" aria-hidden="true">{s.num}</div>
               <div style={{ fontSize: '1.5rem', marginBottom: 'var(--space-3)' }} aria-hidden="true">{s.icon}</div>
               <h3>{s.title}</h3>

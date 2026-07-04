@@ -2,18 +2,14 @@ import { useEffect } from 'react';
 import PageHero from '../components/PageHero';
 import LeadForm from '../components/LeadForm';
 import AnimatedSection from '../components/AnimatedSection';
-
 import heroContact from '../assets/images/hero-contact.jpg';
 
-const HERO = heroContact;
-
 const CONTACT = [
-  { icon:'📞', label:'Phone',   value:'+1 754-327-2760',          desc:'Call or text anytime',         href:'tel:+17543272760' },
-  { icon:'✉️', label:'Email',   value:'handymanseryicesg@mail.com', desc:'We reply within hours',       href:'mailto:handymanseryicesg@mail.com' },
-  { icon:'👍', label:'Facebook',value:'Junk Pro Service',           desc:'Follow us for updates',       href:'https://facebook.com' },
-  { icon:'🌐', label:'Website', value:'junkproservice.com',         desc:'Our live website',            href:'https://junkproservice.com' },
+  { icon:'📞', label:'Phone',   value:'+1 754-327-2760',           desc:'Call or text anytime',   href:'tel:+17543272760' },
+  { icon:'✉️', label:'Email',   value:'handymanseryicesg@mail.com', desc:'We reply within hours',  href:'mailto:handymanseryicesg@mail.com' },
+  { icon:'👍', label:'Facebook',value:'Junk Pro Service',           desc:'Follow us for updates',  href:'https://facebook.com' },
+  { icon:'🌐', label:'Website', value:'junkproservice.com',         desc:'Our live website',       href:'https://junkproservice.com' },
 ];
-
 const AREAS = ['Miami','Fort Lauderdale','Broward County','Miami-Dade','Hollywood','Pembroke Pines','Miramar','Coral Springs'];
 
 function useReveal() {
@@ -37,27 +33,26 @@ export default function Contact() {
 
   return (
     <main className="main-content inner-page page-enter" id="main">
-      <PageHero image={HERO} label="Get In Touch" title="Contact Junk Pro Service"
-        subtitle="Need junk removed? Send us a message and we'll get back to you fast with a free estimate." />
+      <PageHero image={heroContact} label="Get In Touch" title="Contact Junk Pro Service"
+        subtitle="Need junk removed? Send us a message and we'll get back to you fast." />
 
-      {/* Main contact section */}
+      {/* Main contact */}
       <AnimatedSection className="section-pad" style={{ background:'var(--bg-body)' }} aria-labelledby="contact-h">
         <div className="container">
-          <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'var(--space-16)', alignItems:'start' }}>
+          <div className="pg-two-col" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'var(--space-12)', alignItems:'start' }}>
 
-            {/* Info */}
             <div className="reveal-left">
               <span className="label">Reach Us</span>
-              <h2 id="contact-h" style={{ fontSize:'clamp(1.8rem,3.5vw,2.8rem)', fontWeight:900, color:'var(--white)', margin:'var(--space-3) 0 var(--space-5)' }}>
+              <h2 id="contact-h" style={{ fontSize:'clamp(1.6rem,3.5vw,2.5rem)', fontWeight:900, color:'var(--white)', margin:'var(--space-3) 0 var(--space-4)' }}>
                 We're Ready to <span className="txt-yellow">Help</span>
               </h2>
-              <div style={{ width:48, height:3, background:'var(--yellow)', borderRadius:2, marginBottom:'var(--space-8)' }} />
-              <p style={{ color:'var(--text-muted)', lineHeight:1.9, marginBottom:'var(--space-8)' }}>
+              <div style={{ width:48, height:3, background:'var(--yellow)', borderRadius:2, marginBottom:'var(--space-6)' }} />
+              <p style={{ color:'var(--text-muted)', lineHeight:1.9, marginBottom:'var(--space-6)' }}>
                 Whether you have one item or a full property to clear out, we're here to help.
-                Reach out by phone, email, or fill out the form and we'll get back to you fast.
+                Reach out by phone, email, or fill out the form.
               </p>
 
-              <div style={{ display:'flex', flexDirection:'column', gap:'var(--space-3)' }}>
+              <div style={{ display:'flex', flexDirection:'column', gap:'var(--space-3)', marginBottom:'var(--space-6)' }}>
                 {CONTACT.map(c => (
                   <a key={c.label} href={c.href}
                     target={c.href.startsWith('http') ? '_blank' : undefined}
@@ -73,27 +68,15 @@ export default function Contact() {
                 ))}
               </div>
 
-              {/* Big phone CTA */}
-              <a href="tel:+17543272760" style={{
-                display:'block', marginTop:'var(--space-8)',
-                background:'var(--yellow)', borderRadius:'var(--radius-xl)',
-                padding:'var(--space-6) var(--space-8)', textAlign:'center', textDecoration:'none'
-              }} aria-label="Call Junk Pro Service">
-                <p style={{ fontSize:'var(--fs-xs)', fontWeight:700, letterSpacing:3, textTransform:'uppercase', color:'rgba(0,0,0,0.5)', marginBottom:4 }}>
-                  ⚡ Need a Fast Cleanup?
-                </p>
-                <p style={{ fontSize:'clamp(1.4rem,3vw,2rem)', fontWeight:900, fontFamily:'var(--font-heading)', color:'var(--black)', letterSpacing:-0.5 }}>
-                  +1 754-327-2760
-                </p>
-                <p style={{ fontSize:'var(--fs-xs)', color:'rgba(0,0,0,0.5)', marginTop:4 }}>
-                  Same-day service available
-                </p>
+              <a href="tel:+17543272760" className="phone-cta-block" aria-label="Call Junk Pro Service">
+                <p className="phone-cta-eyebrow">⚡ Need a Fast Cleanup?</p>
+                <p className="phone-cta-number">+1 754-327-2760</p>
+                <p className="phone-cta-sub">Same-day service available</p>
               </a>
             </div>
 
-            {/* Form */}
             <div className="reveal-right">
-              <p style={{ fontWeight:700, color:'var(--white)', marginBottom:'var(--space-5)', fontSize:'var(--fs-lg)' }}>
+              <p style={{ fontWeight:700, color:'var(--white)', marginBottom:'var(--space-4)', fontSize:'var(--fs-lg)' }}>
                 Request Your Free Estimate
               </p>
               <LeadForm />
@@ -111,14 +94,12 @@ export default function Contact() {
             <p>Proudly serving South Florida homeowners, property managers, and businesses.</p>
           </div>
           <div className="grid-4" style={{ gap:'var(--space-3)' }}>
-            {AREAS.map((a, i) => (
+            {AREAS.map((a,i) => (
               <div key={a} className={`area-tag reveal delay-${(i%4)+1}`}>📍 {a}</div>
             ))}
           </div>
-          <p style={{ textAlign:'center', marginTop:'var(--space-6)', color:'var(--text-muted)', fontSize:'var(--fs-sm)' }}>
-            Don't see your area?{' '}
-            <a href="tel:+17543272760" style={{ color:'var(--yellow)', fontWeight:700 }}>Call us</a>
-            {' '}— we may still be able to help.
+          <p style={{ textAlign:'center', marginTop:'var(--space-5)', color:'var(--text-muted)', fontSize:'var(--fs-sm)' }}>
+            Don't see your area? <a href="tel:+17543272760" style={{ color:'var(--yellow)', fontWeight:700 }}>Call us</a> — we may still be able to help.
           </p>
         </div>
       </AnimatedSection>

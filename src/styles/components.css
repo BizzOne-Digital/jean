@@ -1330,3 +1330,141 @@
   .svc-btn-row { flex-direction: column; }
   .svc-btn-row .btn { width: 100%; }
 }
+
+/* ══════════════════════════════════════════════
+   MOBILE UTILITY ADDITIONS
+══════════════════════════════════════════════ */
+
+/* Prevent text overflow everywhere */
+* { word-break: break-word; }
+
+/* Ensure images never overflow their containers */
+img { max-width: 100%; height: auto; }
+
+/* Hero home — prevent content overflow */
+.hero-home { overflow-x: hidden; }
+
+/* Fix header logo on very small screens */
+@media (max-width: 380px) {
+  .header-logo-text { display: none; }
+  .header-logo img  { height: 42px; }
+}
+
+/* Prevent horizontal scroll on all pages */
+.page-wrapper,
+.main-content { overflow-x: hidden; }
+
+/* Service card — always full height image on mobile */
+@media (max-width: 768px) {
+  .service-card { border-radius: var(--radius-xl); }
+  .service-card-image { height: 200px; }
+  .service-card-body  { padding: var(--space-5); }
+  .service-card-body h3 { font-size: 1rem; }
+
+  /* Why cards */
+  .why-card { border-radius: var(--radius-xl); }
+
+  /* Audience cards */
+  .audience-card { border-radius: var(--radius-xl); }
+
+  /* Contact card values don't overflow */
+  .contact-card-value { font-size: 0.82rem; word-break: break-all; }
+
+  /* Footer link arrows */
+  .footer-col ul li a::before { display: none; }
+
+  /* Mobile menu bigger tap targets */
+  .mobile-menu a { padding: var(--space-3) 0; }
+
+  /* Form inputs easier to tap */
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 16px !important; /* prevents iOS zoom */
+    padding: 0.8rem 1rem;
+  }
+
+  /* Stats bar padding */
+  .stats-bar { padding: var(--space-6) 0; }
+
+  /* Marquee font */
+  .marquee-item { font-size: 0.75rem; padding: 0 var(--space-4); }
+
+  /* CTA section padding */
+  .cta-section { padding: var(--space-16) 0; }
+
+  /* Modal slides up from bottom on mobile */
+  .modal-overlay { align-items: flex-end; padding: 0; }
+  .modal-box {
+    border-radius: var(--radius-2xl) var(--radius-2xl) 0 0 !important;
+    max-height: 90vh;
+    width: 100%;
+  }
+}
+
+/* ── Feature items (Home "Who We Are" section) ── */
+.feature-item {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5) var(--space-5);
+  transition: border-color 0.25s ease;
+}
+.feature-item:hover { border-color: rgba(255,193,7,0.3); }
+.feature-icon  { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+.feature-title { font-weight: 700; color: var(--white); margin-bottom: 3px; font-size: var(--fs-base); }
+.feature-desc  { font-size: var(--fs-sm); color: var(--text-muted); }
+
+/* ── Hero phone link ── */
+.hero-phone-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+  font-weight: 900;
+  color: var(--yellow);
+  font-family: var(--font-heading);
+  text-decoration: none;
+  margin-bottom: var(--space-2);
+}
+.hero-phone-link:hover { opacity: 0.85; }
+
+/* ── Phone CTA block (Contact page) ── */
+.phone-cta-block {
+  display: block;
+  background: var(--yellow);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5) var(--space-6);
+  text-align: center;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+.phone-cta-block:hover { opacity: 0.9; }
+.phone-cta-eyebrow {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.55);
+  margin-bottom: 4px;
+}
+.phone-cta-number {
+  font-size: clamp(1.3rem, 3vw, 1.9rem);
+  font-weight: 900;
+  font-family: var(--font-heading);
+  color: var(--black);
+  letter-spacing: -0.5px;
+}
+.phone-cta-sub {
+  font-size: var(--fs-xs);
+  color: rgba(0,0,0,0.5);
+  margin-top: 3px;
+}
+
+/* ── Prevent overflow everywhere ── */
+.main-content, .page-wrapper { overflow-x: hidden; }
+img { max-width: 100%; }
+* { min-width: 0; }

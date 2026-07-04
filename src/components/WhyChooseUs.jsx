@@ -18,7 +18,7 @@ export default function WhyChooseUs() {
           </h2>
           <p>We're not just another junk hauler — we're your trusted local cleanup partner.</p>
         </div>
-        <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'var(--space-5)' }}>
+        <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'var(--space-5)' }} className="three-col-grid">
           {REASONS.map((r, i) => (
             <div key={r.title} className={`why-card reveal delay-${(i % 3) + 1}`}>
               <div className="why-card-icon" aria-hidden="true">{r.icon}</div>

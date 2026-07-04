@@ -3,18 +3,17 @@ import { Link } from 'react-router-dom';
 import PageHero from '../components/PageHero';
 import CTASection from '../components/CTASection';
 import AnimatedSection from '../components/AnimatedSection';
-import heroAbout   from '../assets/images/hero-about.jpg';
-import storyImg    from '../assets/images/furniture-team.jpg';
+import heroAbout from '../assets/images/hero-about.jpg';
+import storyImg  from '../assets/images/furniture-team.jpg';
 
 const DIFF = [
-  { icon:'🏆', title:'Professional Service',      desc:'Trained crew that treats your property with complete respect every visit.' },
-  { icon:'💰', title:'Honest Pricing',             desc:'Upfront estimates. No hidden fees. No surprises when the job is done.' },
-  { icon:'📅', title:'Easy Scheduling',            desc:'Book online or by phone. Same-day and next-day appointments available.' },
-  { icon:'🏠', title:'Respect for Your Property',  desc:'We protect your floors, walls, and surroundings during every removal.' },
-  { icon:'♻️', title:'Cleanup-Focused',            desc:'We do the heavy lifting and leave your space clean and ready to use.' },
-  { icon:'📍', title:'Local & Reliable',           desc:'Your neighbors. Familiar with the area and committed to the community.' },
+  { icon:'🏆', title:'Professional Service',     desc:'Trained crew that treats your property with complete respect every visit.' },
+  { icon:'💰', title:'Honest Pricing',            desc:'Upfront estimates. No hidden fees. No surprises when the job is done.' },
+  { icon:'📅', title:'Easy Scheduling',           desc:'Book online or by phone. Same-day and next-day appointments available.' },
+  { icon:'🏠', title:'Respect for Property',      desc:'We protect your floors, walls, and surroundings during every removal.' },
+  { icon:'♻️', title:'Cleanup-Focused',           desc:'We do the heavy lifting and leave your space clean and ready to use.' },
+  { icon:'📍', title:'Local & Reliable',          desc:'Your neighbors. Familiar with the area and committed to the community.' },
 ];
-
 const WHO = [
   { icon:'🏡', title:'Homeowners',        desc:'Reclaim your garage, basement, or yard. We make home cleanups effortless.' },
   { icon:'🔑', title:'Property Managers', desc:'Fast, reliable cleanouts for tenant move-outs and property turnovers.' },
@@ -48,21 +47,21 @@ export default function About() {
       {/* Story */}
       <AnimatedSection className="section-pad" style={{ background:'var(--bg-body)' }} aria-labelledby="story-h">
         <div className="container">
-          <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'var(--space-12)', alignItems:'center' }}>
-            <div className="service-detail-image reveal-left" style={{ height:420 }}>
+          <div className="pg-two-col" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'var(--space-10)', alignItems:'center' }}>
+            <div className="service-detail-image reveal-left" style={{ height:380 }}>
               <img src={storyImg} alt="Junk Pro Service team at work" loading="lazy" />
               <div className="service-detail-image-overlay" />
             </div>
             <div className="reveal-right">
               <span className="label">Our Story</span>
-              <h2 id="story-h" style={{ fontSize:'clamp(1.8rem,3vw,2.5rem)', fontWeight:900, color:'var(--white)', margin:'var(--space-3) 0 var(--space-5)' }}>
-                Built on Trust &amp;<br /><span className="txt-yellow">Hard Work</span>
+              <h2 id="story-h" style={{ fontSize:'clamp(1.6rem,3vw,2.3rem)', fontWeight:900, color:'var(--white)', margin:'var(--space-3) 0 var(--space-4)' }}>
+                Built on Trust &amp; <span className="txt-yellow">Hard Work</span>
               </h2>
-              <div style={{ width:48, height:3, background:'var(--yellow)', borderRadius:2, marginBottom:'var(--space-6)' }} />
-              <p style={{ color:'var(--text-muted)', lineHeight:1.9, marginBottom:'var(--space-5)' }}>
+              <div style={{ width:48, height:3, background:'var(--yellow)', borderRadius:2, marginBottom:'var(--space-5)' }} />
+              <p style={{ color:'var(--text-muted)', lineHeight:1.9, marginBottom:'var(--space-4)' }}>
                 Junk Pro Service provides fast, reliable, and affordable junk removal for homes,
-                businesses, and property managers. We remove unwanted items including furniture,
-                appliances, yard waste, construction debris, and more.
+                businesses, and property managers. We remove furniture, appliances, yard waste,
+                construction debris, and more.
               </p>
               <p style={{ color:'var(--text-muted)', lineHeight:1.9 }}>
                 Founded with a simple promise — to make cleanups easy, honest, and stress-free —
@@ -76,16 +75,16 @@ export default function About() {
       {/* Mission */}
       <AnimatedSection className="section-pad" style={{ background:'var(--bg-section)' }} aria-labelledby="mission-h">
         <div className="container">
-          <div style={{ maxWidth:760, margin:'0 auto', textAlign:'center' }} className="reveal">
+          <div style={{ maxWidth:720, margin:'0 auto', textAlign:'center' }} className="reveal">
             <span className="label">Our Purpose</span>
-            <h2 id="mission-h" style={{ fontSize:'clamp(1.8rem,3.5vw,3rem)', fontWeight:900, color:'var(--white)', margin:'var(--space-3) 0 var(--space-6)' }}>
+            <h2 id="mission-h" style={{ fontSize:'clamp(1.8rem,3.5vw,2.8rem)', fontWeight:900, color:'var(--white)', margin:'var(--space-3) 0 var(--space-4)' }}>
               Our <span className="txt-yellow">Mission</span>
             </h2>
-            <div style={{ width:48, height:3, background:'var(--yellow)', borderRadius:2, margin:'0 auto var(--space-8)' }} />
-            <p style={{ fontSize:'var(--fs-lg)', color:'var(--text-muted)', lineHeight:1.9 }}>
-              Our mission is to make cleanups easy with professional service, honest pricing,
-              and customer satisfaction every time. Every homeowner, property manager, and
-              business deserves a fast, reliable, and affordable cleanup solution they can trust.
+            <div style={{ width:48, height:3, background:'var(--yellow)', borderRadius:2, margin:'0 auto var(--space-6)' }} />
+            <p style={{ fontSize:'var(--fs-md)', color:'var(--text-muted)', lineHeight:1.9 }}>
+              Our mission is to make cleanups easy with professional service, honest pricing, and
+              customer satisfaction every time. Every homeowner and business deserves a fast,
+              reliable, and affordable cleanup solution they can trust.
             </p>
           </div>
         </div>
@@ -99,12 +98,11 @@ export default function About() {
             <h2 id="diff-h">What Makes Us <span className="txt-yellow">Different</span></h2>
             <p>We do more than haul junk. We deliver a complete, professional experience.</p>
           </div>
-          <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'var(--space-5)' }}>
+          <div className="pg-three-col" style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'var(--space-5)' }}>
             {DIFF.map((d,i) => (
               <div key={d.title} className={`why-card reveal delay-${(i%3)+1}`}>
                 <div className="why-card-icon" aria-hidden="true">{d.icon}</div>
-                <h3>{d.title}</h3>
-                <p>{d.desc}</p>
+                <h3>{d.title}</h3><p>{d.desc}</p>
               </div>
             ))}
           </div>
@@ -119,12 +117,11 @@ export default function About() {
             <h2 id="who-h">Who We Help</h2>
             <p>From residential to commercial — our services are built for everyone.</p>
           </div>
-          <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'var(--space-5)' }}>
+          <div className="pg-three-col" style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'var(--space-5)' }}>
             {WHO.map((w,i) => (
               <div key={w.title} className={`audience-card reveal delay-${i+1}`}>
                 <span className="audience-icon" aria-hidden="true">{w.icon}</span>
-                <h3>{w.title}</h3>
-                <p>{w.desc}</p>
+                <h3>{w.title}</h3><p>{w.desc}</p>
               </div>
             ))}
           </div>
