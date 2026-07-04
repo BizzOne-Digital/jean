@@ -777,6 +777,9 @@
   font-weight: var(--fw-bold);
   color: var(--white);
   margin-bottom: var(--space-2);
+  word-break: normal;
+  overflow-wrap: break-word;
+  hyphens: none;
 }
 .why-card p {
   font-size: var(--fs-sm);
@@ -1336,7 +1339,8 @@
 ══════════════════════════════════════════════ */
 
 /* Prevent text overflow everywhere */
-* { word-break: break-word; }
+h1, h2, h3, h4, h5, h6 { hyphens: none; overflow-wrap: break-word; }
+p, li, a, span { overflow-wrap: break-word; }
 
 /* Ensure images never overflow their containers */
 img { max-width: 100%; height: auto; }
@@ -1468,3 +1472,20 @@ img { max-width: 100%; height: auto; }
 .main-content, .page-wrapper { overflow-x: hidden; }
 img { max-width: 100%; }
 * { min-width: 0; }
+
+/* ── Why Cards Grid ── */
+.why-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+}
+
+@media (max-width: 1024px) {
+  .why-cards-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .why-cards-grid { grid-template-columns: 1fr; }
+  .why-card h3    { font-size: var(--fs-base); word-break: normal; overflow-wrap: break-word; }
+  .why-card p     { font-size: var(--fs-sm); }
+}
