@@ -13,6 +13,8 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  padding: var(--space-6);
+  text-align: center;
 }
 .intro-wrapper.exit {
   animation: introExit 0.9s var(--ease-in-expo) forwards;
@@ -56,6 +58,9 @@
   opacity: 0;
   animation: introTextIn 0.7s var(--ease-out-expo) 0.9s forwards;
   z-index: 2;
+  text-align: center;
+  width: 100%;
+  padding: 0 var(--space-6);
 }
 .intro-brand span { color: var(--yellow); }
 
@@ -68,6 +73,9 @@
   opacity: 0;
   animation: introTextIn 0.7s var(--ease-out-expo) 1.2s forwards;
   z-index: 2;
+  text-align: center;
+  width: 100%;
+  padding: 0 var(--space-4);
 }
 @keyframes introTextIn {
   from { opacity: 0; transform: translateY(16px); }

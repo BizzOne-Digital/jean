@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
 import ServiceCard from '../components/ServiceCard';
@@ -7,6 +7,7 @@ import ProcessSection from '../components/ProcessSection';
 import CTASection from '../components/CTASection';
 import LeadForm from '../components/LeadForm';
 import AnimatedSection from '../components/AnimatedSection';
+import EstimateModal from '../components/EstimateModal';
 import imgFurniture    from '../assets/images/hero-furniture.jpg';
 import imgAppliance    from '../assets/images/hero-appliance.jpg';
 import imgYard         from '../assets/images/hero-yard.jpg';
@@ -52,6 +53,7 @@ function useReveal() {
 
 export default function Home() {
   useReveal();
+  const [modalService, setModalService] = useState(null);
   useEffect(() => {
     document.title = 'Junk Pro Service | Local Junk Removal & Property Cleanup Experts';
     const m = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'),{name:'description'});
@@ -61,6 +63,10 @@ export default function Home() {
 
   return (
     <main className="main-content page-enter" id="main">
+
+      {modalService && (
+        <EstimateModal service={modalService} onClose={() => setModalService(null)} />
+      )}
 
       <Hero />
 
@@ -125,7 +131,14 @@ export default function Home() {
             <p>From single-item pickups to full property cleanouts — we handle it all.</p>
           </div>
           <div className="pg-three-col" style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'var(--space-5)' }}>
-            {SERVICES.map((s,i) => <ServiceCard key={s.title} {...s} className={`delay-${(i%3)+1}`} />)}
+            {SERVICES.map((s,i) => (
+              <ServiceCard
+                key={s.title}
+                {...s}
+                className={`delay-${(i%3)+1}`}
+                onEstimate={(title) => setModalService(title)}
+              />
+            ))}
           </div>
           <div style={{ textAlign:'center', marginTop:'var(--space-10)' }} className="reveal">
             <Link to="/services" className="btn btn-primary btn-lg">View All Services →</Link>

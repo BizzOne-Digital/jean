@@ -61,9 +61,6 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <p>© {year} Junk Pro Service. All rights reserved.</p>
-          <div className="footer-badge">
-            Built with <span>♥</span> for Jean &amp; Junk Pro Service
-          </div>
         </div>
       </div>
     </footer>
