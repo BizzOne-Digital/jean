@@ -35,7 +35,7 @@ export default function ServiceDetailLayout({
       <PageHero image={heroImg} label={label} title={title} subtitle={subtitle} />
 
       {/* IMAGE + CONTENT */}
-      <AnimatedSection className="section-pad" style={{ background: 'var(--bg-body)' }}>
+      <AnimatedSection className="section-pad" style={{ background: '#ffffff' }}>
         <div className="container">
           <div className="svc-detail-grid">
 
@@ -48,7 +48,7 @@ export default function ServiceDetailLayout({
               <span className="service-tag">{tag}</span>
 
               <h2 className="svc-detail-heading">
-                {headline} <span className="txt-yellow">{headlineAccent}</span>
+                {headline} <span className="txt-yellow-dark">{headlineAccent}</span>
               </h2>
 
               <div className="svc-accent-bar" />
@@ -64,7 +64,11 @@ export default function ServiceDetailLayout({
                 ))}
               </ul>
 
-              <Link to="/contact" className="btn btn-primary btn-lg">
+              <Link
+                to="/contact"
+                className="btn btn-primary btn-lg"
+                style={{ marginTop: 'var(--space-6)' }}
+              >
                 Get Free Estimate
               </Link>
             </div>
@@ -74,7 +78,7 @@ export default function ServiceDetailLayout({
 
       {/* FEATURE CARDS */}
       {cards && (
-        <AnimatedSection className="section-pad" style={{ background: 'var(--bg-section)' }}>
+        <AnimatedSection className="section-pad" style={{ background: '#111111' }}>
           <div className="container">
             <div className="section-header reveal">
               <span className="label">{cardsLabel}</span>
@@ -98,17 +102,17 @@ export default function ServiceDetailLayout({
       )}
 
       {/* ESTIMATE + FORM */}
-      <AnimatedSection className="section-pad" style={{ background: 'var(--bg-body)' }}>
+      <AnimatedSection className="section-pad" style={{ background: '#ffffff' }}>
         <div className="container">
           <div className="svc-estimate-grid">
 
             <div className="reveal-left">
-              <span className="label">Free Estimate</span>
+              <span className="label" style={{ color: 'var(--yellow-dark)' }}>Free Estimate</span>
               <h2 className="svc-detail-heading">
-                {estimateTitle} <span className="txt-yellow">{estimateAccent}</span>
+                {estimateTitle} <span className="txt-yellow-dark">{estimateAccent}</span>
               </h2>
               <div className="svc-accent-bar" />
-              <p style={{ color: 'var(--text-muted)', lineHeight: 1.8, marginBottom: 'var(--space-5)' }}>
+              <p style={{ color: '#555555', lineHeight: 1.8, marginBottom: 'var(--space-5)' }}>
                 Fill out the form or call us directly. We respond fast with a free, honest estimate.
               </p>
               <a href="tel:+17543272760" className="svc-phone-link">

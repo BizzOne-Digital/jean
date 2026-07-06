@@ -14,22 +14,26 @@
   --white:         #FFFFFF;
 
   /* ── Surface palette ── */
-  --bg-body:       #080808;
-  --bg-card:       #0f0f0f;
-  --bg-card-hover: #141414;
-  --bg-section:    #0a0a0a;
-  --bg-light:      #f5f5f5;
+  --bg-body:       #0d0d0d;
+  --bg-card:       #ffffff;
+  --bg-card-hover: #f8f8f8;
+  --bg-section:    #f5f5f5;
+  --bg-section-dark: #111111;
+  --bg-light:      #ffffff;
   --soft-white:    #F8F8F8;
 
   /* ── Text ── */
   --text-primary:  #ffffff;
+  --text-on-light: #111111;
   --text-muted:    rgba(255,255,255,0.55);
+  --text-muted-dark: #555555;
   --text-faint:    rgba(255,255,255,0.28);
   --text-dark:     #0a0a0a;
-  --text-gray:     #888888;
+  --text-gray:     #666666;
 
   /* ── Borders ── */
   --border:        rgba(255,255,255,0.07);
+  --border-light:  rgba(0,0,0,0.08);
   --border-yellow: rgba(255,193,7,0.25);
   --border-bright: rgba(255,193,7,0.5);
 

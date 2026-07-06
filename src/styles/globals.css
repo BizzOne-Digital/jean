@@ -56,8 +56,9 @@ section { position: relative; }
 .section-pad-lg{ padding: var(--space-32) 0; }
 
 /* Text accents */
-.txt-yellow { color: var(--yellow); }
-.txt-white  { color: var(--white);  }
+.txt-yellow      { color: var(--yellow); }
+.txt-yellow-dark { color: #b8860b; }
+.txt-white       { color: var(--white); }
 
 /* Accessible skip link */
 .sr-only {

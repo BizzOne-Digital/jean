@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PageHero from '../components/PageHero';
 import CTASection from '../components/CTASection';
 import AnimatedSection from '../components/AnimatedSection';
-import EstimateModal from '../components/EstimateModal';
 import heroServices  from '../assets/images/hero-services.jpg';
 import imgFurniture  from '../assets/images/hero-furniture.jpg';
 import imgAppliance  from '../assets/images/hero-appliance.jpg';
@@ -74,7 +73,6 @@ function useReveal() {
 
 export default function Services() {
   useReveal();
-  const [modalService, setModalService] = useState(null); // null = closed
 
   useEffect(() => {
     document.title = 'Services | Junk Pro Service — Junk Removal & Property Cleanup';
@@ -87,14 +85,6 @@ export default function Services() {
   return (
     <main className="main-content inner-page page-enter" id="main">
 
-      {/* Modal */}
-      {modalService && (
-        <EstimateModal
-          service={modalService}
-          onClose={() => setModalService(null)}
-        />
-      )}
-
       <PageHero
         image={HERO}
         label="What We Do"
@@ -102,12 +92,13 @@ export default function Services() {
         subtitle="From single-item pickups to full property cleanouts — we make junk removal simple."
       />
 
-      {/* Services List */}
-      <div style={{ background: 'var(--bg-body)' }}>
+      {/* Services List — white background, alternating light gray */}
+      <div style={{ background: '#ffffff' }}>
         {SERVICES.map((svc, idx) => (
           <AnimatedSection
             key={svc.id}
             className="service-detail-section"
+            style={{ background: idx % 2 === 0 ? '#ffffff' : '#f8f8f8' }}
             aria-labelledby={`svc-${svc.id}`}
           >
             <div className="container">
@@ -146,16 +137,16 @@ export default function Services() {
 
                   {/* ── DUAL BUTTONS ── */}
                   <div className="svc-btn-row">
-                    <button
+                    <Link
+                      to="/contact"
                       className="btn btn-primary"
-                      onClick={() => setModalService(svc.title)}
                       aria-label={`Request estimate for ${svc.title}`}
                     >
                       Request Estimate
-                    </button>
+                    </Link>
                     <Link
                       to={`/services/${svc.id}`}
-                      className="btn btn-outline-yellow"
+                      className="btn btn-dark"
                       aria-label={`View details for ${svc.title}`}
                     >
                       View Detail
@@ -168,27 +159,6 @@ export default function Services() {
           </AnimatedSection>
         ))}
       </div>
-
-      {/* Yellow CTA banner */}
-      <AnimatedSection
-        className="section-yellow section-pad"
-        aria-labelledby="svc-cta-h"
-      >
-        <div className="container reveal" style={{ textAlign: 'center' }}>
-          <h2 id="svc-cta-h" style={{ fontSize: 'clamp(1.6rem,3vw,2.5rem)', fontWeight: 900, marginBottom: 'var(--space-4)' }}>
-            Not sure what service you need?
-          </h2>
-          <p style={{ color: 'rgba(0,0,0,0.65)', maxWidth: 520, margin: '0 auto var(--space-8)', lineHeight: 1.8 }}>
-            Send us a message and we'll help you choose the right cleanup option. No pressure — just honest advice.
-          </p>
-          <div className="cta-btn-group">
-            <Link to="/contact" className="btn btn-dark btn-lg">Send Us a Message</Link>
-            <a href="tel:+17543272760" className="btn btn-outline-yellow btn-lg">
-              Call +1 754-327-2760
-            </a>
-          </div>
-        </div>
-      </AnimatedSection>
 
       <CTASection
         title="Ready to Book Your Junk Removal?"

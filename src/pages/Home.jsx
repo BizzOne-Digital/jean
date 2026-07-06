@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Hero from '../components/Hero';
 import ServiceCard from '../components/ServiceCard';
@@ -7,7 +7,6 @@ import ProcessSection from '../components/ProcessSection';
 import CTASection from '../components/CTASection';
 import LeadForm from '../components/LeadForm';
 import AnimatedSection from '../components/AnimatedSection';
-import EstimateModal from '../components/EstimateModal';
 import imgFurniture    from '../assets/images/hero-furniture.jpg';
 import imgAppliance    from '../assets/images/hero-appliance.jpg';
 import imgYard         from '../assets/images/hero-yard.jpg';
@@ -53,7 +52,6 @@ function useReveal() {
 
 export default function Home() {
   useReveal();
-  const [modalService, setModalService] = useState(null);
   useEffect(() => {
     document.title = 'Junk Pro Service | Local Junk Removal & Property Cleanup Experts';
     const m = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'),{name:'description'});
@@ -63,10 +61,6 @@ export default function Home() {
 
   return (
     <main className="main-content page-enter" id="main">
-
-      {modalService && (
-        <EstimateModal service={modalService} onClose={() => setModalService(null)} />
-      )}
 
       <Hero />
 
@@ -90,30 +84,30 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Who We Are */}
-      <AnimatedSection className="section-pad" style={{ background:'var(--bg-body)' }} aria-labelledby="intro-h">
+      {/* Who We Are — WHITE section */}
+      <AnimatedSection className="section-pad" style={{ background:'#ffffff' }} aria-labelledby="intro-h">
         <div className="container">
           <div className="pg-two-col" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'var(--space-12)', alignItems:'center' }}>
             <div className="reveal-left">
-              <span className="label" style={{ color:'var(--yellow)' }}>Who We Are</span>
-              <h2 id="intro-h" style={{ fontSize:'clamp(1.8rem,4vw,2.8rem)', fontWeight:900, color:'var(--white)', marginTop:'var(--space-3)', marginBottom:'var(--space-4)', letterSpacing:'-0.5px' }}>
-                Cleanups Made <span className="txt-yellow">Simple</span>
+              <span className="label" style={{ color:'var(--yellow-dark)' }}>Who We Are</span>
+              <h2 id="intro-h" style={{ fontSize:'clamp(1.8rem,4vw,2.8rem)', fontWeight:900, color:'#111111', marginTop:'var(--space-3)', marginBottom:'var(--space-4)', letterSpacing:'-0.5px' }}>
+                Cleanups Made <span style={{ color:'var(--yellow-dark)' }}>Simple</span>
               </h2>
               <div style={{ width:48, height:3, background:'var(--yellow)', borderRadius:2, marginBottom:'var(--space-5)' }} />
-              <p style={{ color:'var(--text-muted)', lineHeight:1.9, marginBottom:'var(--space-6)' }}>
+              <p style={{ color:'#555555', lineHeight:1.9, marginBottom:'var(--space-6)' }}>
                 Junk Pro Service helps homeowners, property managers, and small businesses remove
                 unwanted items quickly and professionally. From furniture and appliances to yard
                 waste and construction debris — we make cleanups simple from start to finish.
               </p>
-              <Link to="/about" className="btn btn-outline-yellow">Learn About Us →</Link>
+              <Link to="/about" className="btn btn-primary">Learn About Us →</Link>
             </div>
             <div className="reveal-right" style={{ display:'flex', flexDirection:'column', gap:'var(--space-4)' }}>
               {FEATURES.map(([icon,title,desc]) => (
-                <div key={title} className="feature-item">
+                <div key={title} className="feature-item feature-item-light">
                   <span className="feature-icon" aria-hidden="true">{icon}</span>
                   <div>
-                    <div className="feature-title">{title}</div>
-                    <div className="feature-desc">{desc}</div>
+                    <div className="feature-title" style={{ color:'#111111' }}>{title}</div>
+                    <div className="feature-desc" style={{ color:'#666666' }}>{desc}</div>
                   </div>
                 </div>
               ))}
@@ -122,22 +116,17 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      {/* Services */}
-      <AnimatedSection className="section-pad" style={{ background:'var(--bg-section)' }} aria-labelledby="services-h">
+      {/* Services — LIGHT GRAY section */}
+      <AnimatedSection className="section-pad" style={{ background:'#f5f5f5' }} aria-labelledby="services-h">
         <div className="container">
           <div className="section-header reveal">
-            <span className="label">What We Do</span>
-            <h2 id="services-h">Our Services</h2>
-            <p>From single-item pickups to full property cleanouts — we handle it all.</p>
+            <span className="label" style={{ color:'var(--yellow-dark)' }}>What We Do</span>
+            <h2 id="services-h" style={{ color:'#111111' }}>Our Services</h2>
+            <p style={{ color:'#555555' }}>From single-item pickups to full property cleanouts — we handle it all.</p>
           </div>
           <div className="pg-three-col" style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'var(--space-5)' }}>
             {SERVICES.map((s,i) => (
-              <ServiceCard
-                key={s.title}
-                {...s}
-                className={`delay-${(i%3)+1}`}
-                onEstimate={(title) => setModalService(title)}
-              />
+              <ServiceCard key={s.title} {...s} className={`service-card-light delay-${(i%3)+1}`} />
             ))}
           </div>
           <div style={{ textAlign:'center', marginTop:'var(--space-10)' }} className="reveal">
@@ -177,7 +166,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Process */}
+      {/* Process — WHITE section */}
       <ProcessSection />
 
       {/* Lead Gen */}
@@ -204,21 +193,21 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-      {/* Audiences */}
-      <AnimatedSection className="section-pad" style={{ background:'var(--bg-section)' }} aria-labelledby="audience-h">
+      {/* Audiences — WHITE section */}
+      <AnimatedSection className="section-pad" style={{ background:'#ffffff' }} aria-labelledby="audience-h">
         <div className="container">
           <div className="section-header reveal">
-            <span className="label">Who We Serve</span>
-            <h2 id="audience-h">Built for Everyone</h2>
-            <p>Whether you're a homeowner, landlord, or business owner — we've got you.</p>
+            <span className="label" style={{ color:'var(--yellow-dark)' }}>Who We Serve</span>
+            <h2 id="audience-h" style={{ color:'#111111' }}>Built for Everyone</h2>
+            <p style={{ color:'#555555' }}>Whether you're a homeowner, landlord, or business owner — we've got you.</p>
           </div>
           <div className="pg-three-col" style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:'var(--space-5)' }}>
             {AUDIENCES.map((a,i) => (
-              <div key={a.title} className={`audience-card reveal delay-${i+1}`}>
+              <div key={a.title} className={`audience-card audience-card-light reveal delay-${i+1}`}>
                 <span className="audience-icon" aria-hidden="true">{a.icon}</span>
-                <h3>{a.title}</h3>
-                <p>{a.desc}</p>
-                <Link to="/contact" className="btn btn-outline-yellow btn-sm" style={{ marginTop:'var(--space-5)' }}>Get Started →</Link>
+                <h3 style={{ color:'#111111' }}>{a.title}</h3>
+                <p style={{ color:'#555555' }}>{a.desc}</p>
+                <Link to="/contact" className="btn btn-primary btn-sm" style={{ marginTop:'var(--space-5)' }}>Get Started →</Link>
               </div>
             ))}
           </div>

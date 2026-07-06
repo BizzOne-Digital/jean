@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export default function ServiceCard({ image, icon, title, description, to = '/services', className = '', onEstimate }) {
+export default function ServiceCard({ image, icon, title, description, to = '/services', className = '' }) {
   return (
     <article className={`service-card reveal ${className}`}>
       <div className="service-card-image">
@@ -12,16 +12,16 @@ export default function ServiceCard({ image, icon, title, description, to = '/se
         <h3>{title}</h3>
         <p>{description}</p>
         <div className="service-card-actions">
-          <button
+          <Link
+            to="/contact"
             className="btn btn-primary btn-sm"
-            onClick={() => onEstimate && onEstimate(title)}
             aria-label={`Request estimate for ${title}`}
           >
             Request Estimate
-          </button>
+          </Link>
           <Link
             to={to}
-            className="btn btn-outline-yellow btn-sm"
+            className="btn btn-dark btn-sm"
             aria-label={`View details for ${title}`}
           >
             View Detail

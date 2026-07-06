@@ -114,9 +114,9 @@
   .contact-card { padding: var(--space-4) !important; }
   .contact-card-value { font-size: 0.82rem !important; word-break: break-all !important; }
 
-  /* Modal — slide up from bottom */
-  .modal-overlay { align-items: flex-end !important; padding: 0 !important; }
-  .modal-box     { max-height: 92vh !important; border-radius: var(--radius-2xl) var(--radius-2xl) 0 0 !important; width: 100% !important; }
+  /* Modal — centered on mobile too */
+  .modal-overlay { padding: var(--space-3) !important; align-items: flex-start !important; padding-top: var(--space-8) !important; }
+  .modal-box     { max-height: calc(100vh - 4rem) !important; border-radius: var(--radius-xl) !important; width: 100% !important; }
   .modal-header  { padding: var(--space-5) var(--space-5) 0 !important; }
   .modal-body    { padding: 0 var(--space-5) var(--space-6) !important; }
 

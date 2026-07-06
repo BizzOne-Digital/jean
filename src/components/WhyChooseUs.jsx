@@ -9,14 +9,14 @@ const REASONS = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="section-pad section-dark" aria-labelledby="why-heading">
+    <section className="section-pad" style={{ background:'#111111' }} aria-labelledby="why-heading">
       <div className="container">
         <div className="section-header reveal">
           <span className="label">Why Us</span>
-          <h2 id="why-heading">
+          <h2 id="why-heading" style={{ color:'#ffffff' }}>
             Why Choose <span className="txt-yellow">Junk Pro Service</span>
           </h2>
-          <p>We're not just another junk hauler — we're your trusted local cleanup partner.</p>
+          <p style={{ color:'rgba(255,255,255,0.6)' }}>We're not just another junk hauler — we're your trusted local cleanup partner.</p>
         </div>
         <div className="why-cards-grid">
           {REASONS.map((r, i) => (
