@@ -44,13 +44,9 @@ export default function Footer() {
               <span className="footer-contact-row-icon" aria-hidden="true">📞</span>
               +1 754-327-2760
             </a>
-            <a href="mailto:handymanseryicesg@mail.com" className="footer-contact-row" aria-label="Email us">
+            <a href="mailto:independentricbrand@mail.com" className="footer-contact-row" aria-label="Email us">
               <span className="footer-contact-row-icon" aria-hidden="true">✉️</span>
-              handymanseryicesg@mail.com
-            </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="footer-contact-row" aria-label="Facebook">
-              <span className="footer-contact-row-icon" aria-hidden="true">👍</span>
-              Facebook
+              independentricbrand@mail.com
             </a>
             <a href="https://junkproservice.com" target="_blank" rel="noopener noreferrer" className="footer-contact-row" aria-label="Website">
               <span className="footer-contact-row-icon" aria-hidden="true">🌐</span>

@@ -6,8 +6,7 @@ import heroContact from '../assets/images/hero-contact.jpg';
 
 const CONTACT = [
   { icon:'📞', label:'Phone',   value:'+1 754-327-2760',           desc:'Call or text anytime',   href:'tel:+17543272760' },
-  { icon:'✉️', label:'Email',   value:'handymanseryicesg@mail.com', desc:'We reply within hours',  href:'mailto:handymanseryicesg@mail.com' },
-  { icon:'👍', label:'Facebook',value:'Junk Pro Service',           desc:'Follow us for updates',  href:'https://facebook.com' },
+  { icon:'✉️', label:'Email', value:'independentricbrand@mail.com', desc:'We reply within hours', href:'mailto:independentricbrand@mail.com' },
   { icon:'🌐', label:'Website', value:'junkproservice.com',         desc:'Our live website',       href:'https://junkproservice.com' },
 ];
 const AREAS = ['Punta Gorda', 'Port Charlotte', 'North Port', 'Englewood', 'Venice', 'Sarasota', 'Fort Myers', 'Cape Coral'];

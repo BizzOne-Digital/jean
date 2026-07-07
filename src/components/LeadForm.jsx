@@ -1,7 +1,5 @@
 import { useState } from 'react';
 
-const WEB3FORMS_KEY = 'd5fe78b6-152f-4cfa-a8a3-01f5723211af';
-
 const SERVICES = [
   'Furniture Removal',
   'Appliance Removal',
@@ -15,63 +13,33 @@ const SERVICES = [
 const TYPES = ['Home', 'Rental Property', 'Business', 'Commercial Property', 'Other'];
 
 export default function LeadForm({ preselected = '' }) {
+  const [result,  setResult]  = useState('');
   const [done,    setDone]    = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error,   setError]   = useState('');
 
-  const [form, setForm] = useState({
-    name:         '',
-    phone:        '',
-    email:        '',
-    service:      preselected || '',
-    propertyType: '',
-    address:      '',
-    date:         '',
-    message:      '',
-  });
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setResult('Sending…');
 
-  const set = e => setForm(p => ({ ...p, [e.target.name]: e.target.value }));
+    const formData = new FormData(event.target);
+    formData.append('access_key', 'd5fe78b6-152f-4cfa-a8a3-01f5723211af');
+    formData.append('subject',    'New Estimate Request — Junk Pro Service');
+    formData.append('from_name',  'Junk Pro Service Website');
 
-  const submit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData,
+    });
 
-    try {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({
-          access_key:    WEB3FORMS_KEY,
-          subject:       `New Estimate Request — ${form.service || 'Junk Removal'}`,
-          from_name:     'Junk Pro Service Website',
-          name:          form.name,
-          phone:         form.phone,
-          email:         form.email || 'Not provided',
-          service:       form.service || 'Not specified',
-          property_type: form.propertyType || 'Not specified',
-          address:       form.address || 'Not provided',
-          preferred_date: form.date || 'Not specified',
-          message:       form.message || 'No message',
-          botcheck:      '',   // honeypot
-        }),
-      });
+    const data = await response.json();
 
-      const data = await res.json();
-
-      if (data.success) {
-        setDone(true);
-      } else {
-        setError('Something went wrong. Please call us at +1 754-327-2760.');
-      }
-    } catch {
-      setError('Network error. Please call us at +1 754-327-2760.');
-    } finally {
-      setLoading(false);
+    if (data.success) {
+      setDone(true);
+      event.target.reset();
+    } else {
+      setResult('Something went wrong. Please call +1 754-327-2760.');
     }
   };
 
-  // Success state
   if (done) return (
     <div className="lead-form">
       <div className="form-success">
@@ -83,90 +51,82 @@ export default function LeadForm({ preselected = '' }) {
   );
 
   return (
-    <form className="lead-form" onSubmit={submit} noValidate aria-label="Free estimate request">
+    <form className="lead-form" onSubmit={onSubmit} noValidate aria-label="Free estimate request">
 
-      {/* Honeypot — hidden from users, catches bots */}
+      {/* Web3Forms honeypot — stops bots */}
       <input type="checkbox" name="botcheck" style={{ display:'none' }} tabIndex={-1} autoComplete="off" />
 
       <div className="form-grid-2">
         <div className="form-group">
           <label htmlFor="lf-name">Full Name *</label>
-          <input
-            id="lf-name" name="name" type="text"
+          <input id="lf-name" name="name" type="text"
             placeholder="Your full name"
-            value={form.name} onChange={set}
-            required autoComplete="name"
-          />
+            defaultValue=""
+            required autoComplete="name" />
         </div>
         <div className="form-group">
           <label htmlFor="lf-phone">Phone *</label>
-          <input
-            id="lf-phone" name="phone" type="tel"
+          <input id="lf-phone" name="phone" type="tel"
             placeholder="+1 (754) 000-0000"
-            value={form.phone} onChange={set}
-            required autoComplete="tel"
-          />
+            defaultValue=""
+            required autoComplete="tel" />
         </div>
       </div>
 
       <div className="form-group">
         <label htmlFor="lf-email">Email</label>
-        <input
-          id="lf-email" name="email" type="email"
+        <input id="lf-email" name="email" type="email"
           placeholder="your@email.com"
-          value={form.email} onChange={set}
-          autoComplete="email"
-        />
+          defaultValue=""
+          autoComplete="email" />
       </div>
 
       <div className="form-grid-2">
         <div className="form-group">
           <label htmlFor="lf-service">Service Needed *</label>
-          <select id="lf-service" name="service" value={form.service} onChange={set} required>
+          <select id="lf-service" name="service" defaultValue={preselected} required>
             <option value="">Select service…</option>
-            {SERVICES.map(s => <option key={s} value={s}>{s}</option>)}
+            {SERVICES.map(s => (
+              <option key={s} value={s}>{s}</option>
+            ))}
           </select>
         </div>
         <div className="form-group">
           <label htmlFor="lf-type">Property Type</label>
-          <select id="lf-type" name="propertyType" value={form.propertyType} onChange={set}>
+          <select id="lf-type" name="property_type" defaultValue="">
             <option value="">Select type…</option>
-            {TYPES.map(t => <option key={t} value={t}>{t}</option>)}
+            {TYPES.map(t => (
+              <option key={t} value={t}>{t}</option>
+            ))}
           </select>
         </div>
       </div>
 
       <div className="form-group">
         <label htmlFor="lf-address">Pickup Address</label>
-        <input
-          id="lf-address" name="address" type="text"
+        <input id="lf-address" name="address" type="text"
           placeholder="123 Main St, City, State"
-          value={form.address} onChange={set}
-          autoComplete="street-address"
-        />
+          defaultValue=""
+          autoComplete="street-address" />
       </div>
 
       <div className="form-group">
         <label htmlFor="lf-date">Preferred Date</label>
-        <input
-          id="lf-date" name="date" type="date"
-          value={form.date} onChange={set}
-          min={new Date().toISOString().split('T')[0]}
-        />
+        <input id="lf-date" name="preferred_date" type="date"
+          defaultValue=""
+          min={new Date().toISOString().split('T')[0]} />
       </div>
 
       <div className="form-group">
         <label htmlFor="lf-msg">What needs to be removed?</label>
-        <textarea
-          id="lf-msg" name="message" rows={3}
+        <textarea id="lf-msg" name="message" rows={3}
           placeholder="Describe what needs to go…"
-          value={form.message} onChange={set}
-        />
+          defaultValue="" />
       </div>
 
-      {error && (
-        <p style={{ color:'#cc0000', fontSize:'var(--fs-sm)', marginBottom:'var(--space-4)', fontWeight:600 }}>
-          ⚠️ {error}
+      {result && !done && (
+        <p style={{ color:'#cc3300', fontSize:'var(--fs-sm)', marginBottom:'var(--space-3)', fontWeight:600 }}>
+          {result}
         </p>
       )}
 
@@ -174,9 +134,8 @@ export default function LeadForm({ preselected = '' }) {
         type="submit"
         className="btn btn-primary btn-lg btn-glow"
         style={{ width:'100%', justifyContent:'center' }}
-        disabled={loading}
       >
-        {loading ? 'Sending…' : 'Request Free Estimate →'}
+        {result === 'Sending…' ? 'Sending…' : 'Request Free Estimate →'}
       </button>
     </form>
   );
